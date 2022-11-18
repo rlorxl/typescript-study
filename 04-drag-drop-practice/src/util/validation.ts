@@ -14,14 +14,14 @@ export function validate(validatableInput: Validatable) {
     isValid = isValid && validatableInput.value.toString().trim().length !== 0;
   }
   if (
-    validatableInput.minLength != null && // '!='표시는 null과 undefined를 포함한다.
+    validatableInput.minLength != null &&
     typeof validatableInput.value === 'string'
   ) {
     isValid =
       isValid && validatableInput.value.length >= validatableInput.minLength;
   }
   if (
-    validatableInput.maxLength != null && // '!='표시는 null과 undefined를 포함한다.
+    validatableInput.maxLength != null &&
     typeof validatableInput.value === 'string'
   ) {
     isValid =

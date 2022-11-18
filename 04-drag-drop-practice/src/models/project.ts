@@ -1,8 +1,8 @@
-// Projcet Type
 export enum ProjectStatus {
   Active,
-  Finished,
+  Finished
 }
+
 export class Project {
   constructor(
     public id: string,
