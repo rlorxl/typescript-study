@@ -38,7 +38,31 @@ console.log(mergedObj.age);
 `const mergedObj = merge({ name: 'Joeun' }, 30);`
 (30은 오브젝트 타입이 아니지만 에러는 나지 않는다.)
 
-제네릭을 사용해서 타입지정을 유연하게 했지만 최소한 입력값이 오브젝트라는것은 알려주고 싶으면 'extends' 키워드를 추가하면 된다. 그러면 정상적으로 에러를 보여줄 것이다.
+### 제네릭타입 확장하기
+
+```js
+type Player<T> = {
+  name: string
+  extraInfo: T
+}
+
+type NicoPlayer = Player<{ favfood: string }> // Player의 제네릭 타입 지정
+
+const nico: NicoPlayer = {
+  name: "nico",
+  extraInfo: {
+    favfood: "banana"
+  }
+}
+```
+
+제네릭타입이 지정된 기본 Player타입에 타입을 지정해서 또 다른 타입을 만들고(NicoPlayer) 사용.
+
+타입의 재사용을 가능하게 하는점에서 유용하다.
+
+### extends
+
+제네릭을 사용해서 타입지정을 유연하게 했지만 최소한 입력값이 오브젝트라는것은 알려주고 싶으면 `extends` 키워드를 추가하면 된다. 그러면 정상적으로 에러를 보여줄 것이다.
 
 ```js
 function merge<T extends object, U extends object>(objA: T, objB: U) {
@@ -46,4 +70,41 @@ function merge<T extends object, U extends object>(objA: T, objB: U) {
 }
 ```
 
-<br/>
+<br />
+
+### Classes
+
+```js
+  abstract class User { // 추상 클래스
+    constructor(
+      private firstName: string, // private: 클래스 외부에서 접근금지
+      private lastName: string,
+      protected nickname: string // protected: 상속받은 클래스 내부에서는 접근가능
+    ) {}
+
+    abstract getNickName():void // 메서드 상속
+
+    getFullName() {
+      return `${this.firstName} ${this.lastName}`
+    }
+  }
+
+  class Player extends User {
+    getNickName() {
+      console.log(this.nickname)
+    }
+  }
+
+  const nico = new Player("nico", "las", "니꼬");
+  nico.getFullName()
+```
+
+추상 클래스 : 다른 클래스가 상속받을 수 있는 클래스(개별 인스턴스로는 만들 수 없음.) constructor뿐만 아니라 메서드도 상속된다.
+
+**키워드별 접근 가능한 위치**
+
+|   구분    | 선언한 클래스 내부 | 상속받은 클래스 내부 | 인스턴스 |
+| :-------: | :----------------: | :------------------: | :------: |
+|  private  |         O          |          X           |    X     |
+| protected |         O          |          O           |    X     |
+|  public   |         O          |          O           |    O     |
