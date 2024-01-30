@@ -23,19 +23,17 @@ javascript는 에러를 발생시키지 않으려고 한다. 이상한 코드가
 - 컨벤션 & 팀 문화 지향하기
 
 ## Types
+- **Boolean:** let isBoolean: boolean = false`                                               
+- **Number:** let num: number
+- **String:** let string: string
+- **Array(문자열):** let fruits: string[] = ['Apple', 'Banana', 'Mango']
+- **Array(숫자):** let oneToSeven: number[] = [1,2,3,4,5,6,7]
+- **Union:** let array: (string|number)[] = ['Apple', 1, 2, 'Banana', 'Mango', 3]
+- **any(지양):** let array: (string|number)[] = ['Apple', 1, 2, 'Banana', 'Mango', 3]
+- **readonly:** let arr: readonly number[] = [1,2,3,4]
+- **함수 타입**: let combineValues: (a: number, b: number) => number
 
-|     type      |                                                            example                                                             |
-| :-----------: | :----------------------------------------------------------------------------------------------------------------------------: | -------------------------------------------------- |
-|    Boolean    |                                                `let isBoolean: boolean = false`                                                |
-|    Number     |                                                       `let num: number`                                                        |
-|    String     |                                                      `let string: string`                                                      |
-| Array(문자열) |                                     `let fruits: string[] = ['Apple', 'Banana', 'Mango']`                                      |
-|  Array(숫자)  |                                          `let oneToSeven: number[] = [1,2,3,4,5,6,7]`                                          |
-|     Union     |                                                      `let array: (string                                                       | number)[] = ['Apple', 1, 2, 'Banana', 'Mango', 3]` |
-|  any(\*지양)  |                                                      `let array: (string                                                       | number)[] = ['Apple', 1, 2, 'Banana', 'Mango', 3]` |
-|   readonly    |                                            `let arr: readonly number[] = [1,2,3,4]`                                            |
-|   함수 타입   |                                     `let combineValues: (a: number, b: number) => number`                                      |
-|               | 매개 변수 타입과 반환 타입을 지정하여 어떤 유형의 함수를 사용하려는지 구체적으로 설명할 수 있다. (어느정도 타입 추론이 가능함) |
+매개 변수 타입과 반환 타입을 지정하여 어떤 유형의 함수를 사용하려는지 구체적으로 설명할 수 있다. (어느정도 타입 추론이 가능함)
 
 ---
 
